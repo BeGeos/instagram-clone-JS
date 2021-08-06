@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InstaClone</title>
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>InstaClone</h1>
+      </nav>
+    </header>
+    <!-- <button id="activate">Show</button> -->
+    <div class="overlay"></div>
+    <div class="create-post" id="create">
+      <h1>InstaClone</h1>
+      <form method="POST" id="post-pic" enctype="multipart/form-data">
+        <input
+          type="text"
+          id="insta-name"
+          name="name"
+          placeholder="Enter a name..."
+        />
+        <div class="error-message" id="insta-name-msg"></div>
+        <textarea
+          name="description"
+          id="insta-description"
+          rows="10"
+          placeholder="A short description..."
+        ></textarea>
+        <div class="error-message" id="insta-text-msg"></div>
+        <input type="file" id="picture" name="insta" />
+        <div class="error-message" id="insta-file-msg"></div>
+        <button id="publish" type="button">Publish</button>
+      </form>
+    </div>
+    <div class="comment-post" id="comment">
+      <h1>InstaClone</h1>
+
+      <form id="leave-comment">
+        <p>
+          Please remember to keep things polite and respectful at all times. No
+          insult is allowed. If so you might be banned permanently from this
+          platform. Take a look at <a href="">guidelines</a> and
+          <a href="">comment policy</a>.
+        </p>
+        <input
+          type="text"
+          id="comment-name"
+          name="name"
+          placeholder="Enter a name..."
+        />
+        <div class="error-message" id="comment-name-msg"></div>
+        <textarea
+          name="comment-text"
+          id="comment-text"
+          rows="10"
+          placeholder="Leave a comment..."
+        ></textarea>
+        <div class="error-message" id="comment-text-msg"></div>
+        <button id="comment-btn" type="button">Comment</button>
+      </form>
+    </div>
+    <div class="read-comments" id="read">
+      <h1>InstaClone</h1>
+      <div class="comment-container"></div>
+    </div>
+    <!-- Add post button -->
+    <button id="add-post">
+      <img src="./public/images/plus__button.svg" alt="add post" />
+    </button>
+    <!-- Cards -->
+    <div class="cards"></div>
+    <!-- end Cards -->
+    <footer id="footer"></footer>
+    <script src="./client.js"></script>
+  </body>
+</html>

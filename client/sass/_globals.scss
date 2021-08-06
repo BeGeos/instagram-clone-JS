@@ -1,0 +1,41 @@
+@import "variables";
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: $bodyColor;
+  position: relative;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: rgb(4, 0, 250);
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+h1 {
+  font-family: "Lobster", cursive;
+  font-size: 48px;
+}

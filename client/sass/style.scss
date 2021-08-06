@@ -1,0 +1,258 @@
+@import "variables";
+@import "header";
+@import "globals";
+@import "mixin";
+
+// Cards with pics & description
+.cards {
+  max-width: Min(100%, 540px);
+  margin: 0 auto;
+}
+
+.author {
+  font-weight: 700;
+}
+
+.card {
+  margin: 1em auto;
+  padding: 30px;
+  width: 100%;
+  min-height: 600px;
+  // max-height: 800px;
+  background-color: white;
+  border: none;
+  // border-radius: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  &__image {
+    width: Min(100%, 480px);
+    height: 360px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("../images/landscape.jpeg");
+  }
+
+  &__stats {
+    display: flex;
+    margin: 20px 0 10px 0;
+    font-size: 14px;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      button {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        opacity: 0.5;
+        text-align: left;
+
+        &:hover {
+          text-decoration: underline;
+          opacity: 1;
+        }
+
+        &.liked {
+          color: red;
+          opacity: 1;
+        }
+
+        &.flagged {
+          width: 70px;
+          opacity: 1;
+
+          .flag {
+            transform: translateY(0%);
+          }
+        }
+
+        .flag {
+          top: 0;
+          position: absolute;
+          right: 0;
+          transform: translateY(100%);
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+
+    p {
+      margin-left: auto;
+    }
+  }
+
+  &__text {
+    max-height: 110px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    overflow-y: hidden;
+
+    .author {
+      cursor: pointer;
+    }
+  }
+
+  .read-more-text {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    opacity: 0.5;
+    margin-top: 8px;
+    float: right;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+  }
+}
+
+// Button for adding posts
+#add-post {
+  position: fixed;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  bottom: 20px;
+  right: 15%;
+}
+
+// Overlay for on-screen post, read, write
+.overlay.show {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $navColor;
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.create-post,
+.comment-post,
+.read-comments {
+  padding: 15px 30px;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  width: Min(90%, 540px);
+  min-height: 600px;
+  background-color: white;
+  z-index: 9;
+  transform: translate(-50%, -150%);
+  transition: transform 0.5s ease-in;
+
+  &.active {
+    transform: translate(-50%, 0);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.create-post,
+.comment-post {
+  form {
+    display: flex;
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+
+    input {
+      min-width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 20px 10px;
+      font-family: inherit;
+    }
+
+    textarea {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      min-width: 100%;
+      resize: none;
+      max-height: 230px;
+      padding: 10px;
+      font-family: inherit;
+    }
+
+    button {
+      background-color: $navColor;
+      color: white;
+      font-weight: 700;
+      padding: 1em 1.75em;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: inherit;
+
+      &:hover {
+        background-color: lighten($navColor, 20%);
+      }
+    }
+
+    .error-message {
+      position: absolute;
+      color: red;
+      font-size: 12px;
+    }
+
+    #insta-name-msg {
+      right: 0;
+      top: 60px;
+    }
+
+    #insta-text-msg {
+      right: 0;
+      top: 278px;
+    }
+
+    #insta-file-msg {
+      right: 0;
+      bottom: 60px;
+    }
+
+    #comment-name-msg {
+      right: 0;
+      top: 165px;
+    }
+
+    #comment-text-msg {
+      right: 0;
+      bottom: 60px;
+    }
+  }
+}
+
+.comment-post p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+.comment-container {
+  @include hideScrollbar;
+  max-height: 400px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  overflow-x: visible;
+  gap: 20px;
+
+  .comment {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: -2px 5px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+}

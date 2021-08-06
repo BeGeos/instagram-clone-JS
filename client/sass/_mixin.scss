@@ -1,0 +1,15 @@
+@mixin hideScrollbar {
+  // https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-with-pure-css-in-chrome-ie-6-firefox-opera-and-safari/
+  // There is a CSS rule that can hide scrollbars in Webkit-based browsers (Chrome and Safari).
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  // There is a CSS rule that can hide scrollbars in IE 10+.
+  -ms-overflow-style: none;
+
+  // Use -ms-autohiding-scrollbar if you wish to display on hover.
+  // -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  // There used to be a CSS rule that could hide scrollbars in Firefox, but it has since been deprecated.
+  scrollbar-width: none;
+}

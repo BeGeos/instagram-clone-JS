@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+header {
+  height: 5rem;
+  background-color: #000;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #e4e2e2;
+  position: relative;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: #0400fa;
+}
+
+a:hover {
+  text-decoration: underline;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
+}
+
+h1 {
+  font-family: "Lobster", cursive;
+  font-size: 48px;
+}
+
+.cards {
+  max-width: Min(100%, 540px);
+  margin: 0 auto;
+}
+
+.author {
+  font-weight: 700;
+}
+
+.card {
+  margin: 1em auto;
+  padding: 30px;
+  width: 100%;
+  min-height: 600px;
+  background-color: white;
+  border: none;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.card__image {
+  width: Min(100%, 480px);
+  height: 360px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/landscape.jpeg");
+}
+
+.card__stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 0 10px 0;
+  font-size: 14px;
+}
+
+.card__stats ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+
+.card__stats ul button {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  text-align: left;
+}
+
+.card__stats ul button:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.card__stats ul button.liked {
+  color: red;
+  opacity: 1;
+}
+
+.card__stats ul button.flagged {
+  width: 70px;
+  opacity: 1;
+}
+
+.card__stats ul button.flagged .flag {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.card__stats ul button .flag {
+  top: 0;
+  position: absolute;
+  right: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.card__stats p {
+  margin-left: auto;
+}
+
+.card__text {
+  max-height: 110px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  overflow-y: hidden;
+}
+
+.card__text .author {
+  cursor: pointer;
+}
+
+.card .read-more-text {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  margin-top: 8px;
+  float: right;
+}
+
+.card .read-more-text:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+#add-post {
+  position: fixed;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  bottom: 20px;
+  right: 15%;
+}
+
+.overlay.show {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.create-post,
+.comment-post,
+.read-comments {
+  padding: 15px 30px;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  width: Min(90%, 540px);
+  min-height: 600px;
+  background-color: white;
+  z-index: 9;
+  -webkit-transform: translate(-50%, -150%);
+          transform: translate(-50%, -150%);
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+}
+
+.create-post.active,
+.comment-post.active,
+.read-comments.active {
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.create-post h1,
+.comment-post h1,
+.read-comments h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.create-post form,
+.comment-post form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  max-width: 360px;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 35px;
+}
+
+.create-post form input,
+.comment-post form input {
+  min-width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 20px 10px;
+  font-family: inherit;
+}
+
+.create-post form textarea,
+.comment-post form textarea {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  min-width: 100%;
+  resize: none;
+  max-height: 230px;
+  padding: 10px;
+  font-family: inherit;
+}
+
+.create-post form button,
+.comment-post form button {
+  background-color: #000;
+  color: white;
+  font-weight: 700;
+  padding: 1em 1.75em;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.create-post form button:hover,
+.comment-post form button:hover {
+  background-color: #333333;
+}
+
+.create-post form .error-message,
+.comment-post form .error-message {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+}
+
+.create-post form #insta-name-msg,
+.comment-post form #insta-name-msg {
+  right: 0;
+  top: 60px;
+}
+
+.create-post form #insta-text-msg,
+.comment-post form #insta-text-msg {
+  right: 0;
+  top: 278px;
+}
+
+.create-post form #insta-file-msg,
+.comment-post form #insta-file-msg {
+  right: 0;
+  bottom: 60px;
+}
+
+.create-post form #comment-name-msg,
+.comment-post form #comment-name-msg {
+  right: 0;
+  top: 165px;
+}
+
+.create-post form #comment-text-msg,
+.comment-post form #comment-text-msg {
+  right: 0;
+  bottom: 60px;
+}
+
+.comment-post p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+.comment-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  max-height: 400px;
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-x: visible;
+  gap: 20px;
+}
+
+.comment-container::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.comment-container .comment {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: -2px 5px 10px -5px rgba(0, 0, 0, 0.3);
+          box-shadow: -2px 5px 10px -5px rgba(0, 0, 0, 0.3);
+}

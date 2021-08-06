@@ -1,0 +1,15 @@
+@import "variables";
+
+header {
+  height: 5rem;
+  background-color: $navColor;
+  color: white;
+  display: flex;
+  align-items: center;
+
+  nav {
+    max-width: 540px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
